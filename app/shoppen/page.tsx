@@ -13,6 +13,7 @@ export default function ShoppenPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [checkedOut, setCheckedOut] = useState(false);
   const [filter, setFilter] = useState("Alle");
+  const [address, setAddress] = useState("");
 
   const categories = ["Alle", ...Array.from(new Set(products.map((p) => p.category)))];
   const filtered = filter === "Alle" ? products : products.filter((p) => p.category === filter);
@@ -36,8 +37,9 @@ export default function ShoppenPage() {
     if (cart.length === 0) return;
     setCheckedOut(true);
     const orderNum = `DE-${Math.floor(1000 + Math.random() * 9000)}-${Math.floor(1000 + Math.random() * 9000)}`;
+    const addr = address.trim() || "Deutschland";
     setTimeout(() => {
-      router.push(`/shoppen/bestellung?order=${orderNum}&items=${cartCount}`);
+      router.push(`/shoppen/bestellung?order=${orderNum}&items=${cartCount}&address=${encodeURIComponent(addr)}`);
     }, 1200);
   };
 
@@ -135,6 +137,18 @@ export default function ShoppenPage() {
                       </div>
                     ))}
                   </div>
+                  {/* Address */}
+                  <div className="mb-4">
+                    <label className="block text-xs text-slate-400 mb-1.5">📍 Lieferadresse (nur zum Spaß)</label>
+                    <input
+                      type="text"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                      placeholder="z.B. Unter den Linden 1, Berlin"
+                      className="w-full bg-slate-800/60 border border-slate-700/60 rounded-xl px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-blue-500/60 transition-colors"
+                    />
+                  </div>
+
                   <div className="border-t border-slate-700/60 pt-3 mb-4">
                     <div className="flex justify-between text-xs text-slate-400 mb-1">
                       <span>Versand (gratis)</span><span>0,00€</span>

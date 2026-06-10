@@ -17,6 +17,7 @@ function BestellungContent() {
   const params = useSearchParams();
   const orderNum = params.get("order") || "DE-0000-0000";
   const items = parseInt(params.get("items") || "1");
+  const address = params.get("address") || "";
 
   const [step, setStep] = useState(0);
   const [elapsed, setElapsed] = useState(0);
@@ -68,9 +69,10 @@ function BestellungContent() {
             </div>
             <span className="text-3xl">📦</span>
           </div>
-          <div className="flex gap-4 text-sm text-slate-400">
-            <span>🛍️ {items} {items === 1 ? "Artikel" : "Artikel"}</span>
-            <span>📅 Lieferung: {dateStr} (virtuell)</span>
+          <div className="flex flex-wrap gap-3 text-sm text-slate-400">
+            <span>🛍️ {items} Artikel</span>
+            <span>📅 Lieferung: {dateStr}</span>
+            {address && <span>📍 {address}</span>}
           </div>
         </div>
 
