@@ -84,7 +84,7 @@ export default function PausePage() {
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
       <div className="bg-slate-800/80 border-b border-slate-700/50 px-4 py-2 text-center">
         <p className="text-xs text-slate-500">
-          ⚠️ Simulationsseite — Alle Nutzer und Nachrichten sind fiktiv oder anonym.
+          ⚠️ Zum Spaß — virtuelle Pause. Nachrichten sind anonym.
         </p>
       </div>
 

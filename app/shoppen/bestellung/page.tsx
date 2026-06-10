@@ -48,7 +48,7 @@ function BestellungContent() {
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
       <div className="bg-slate-800/80 border-b border-slate-700/50 px-4 py-2 text-center">
         <p className="text-xs text-slate-500">
-          ⚠️ Simulationsseite — Diese Bestellung und Lieferung ist vollständig fiktiv.
+          ⚠️ Zum Spaß — kein echter Kauf, keine echte Lieferung.
         </p>
       </div>
 
@@ -70,7 +70,7 @@ function BestellungContent() {
           </div>
           <div className="flex gap-4 text-sm text-slate-400">
             <span>🛍️ {items} {items === 1 ? "Artikel" : "Artikel"}</span>
-            <span>📅 Lieferung: {dateStr} (fiktiv)</span>
+            <span>📅 Lieferung: {dateStr} (virtuell)</span>
           </div>
         </div>
 
@@ -78,7 +78,7 @@ function BestellungContent() {
         <div className="rounded-2xl border border-slate-700/60 bg-slate-900/60 p-5">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-slate-200">PKT Express Sendungsverfolgung</span>
-            <span className="text-xs text-slate-500">fiktive Sendung</span>
+            <span className="text-xs text-slate-500">virtuelle Sendung</span>
           </div>
           <div className="w-full bg-slate-800 rounded-full h-2 mb-4 overflow-hidden">
             <div
@@ -110,7 +110,7 @@ function BestellungContent() {
             <div className="text-5xl mb-3">🎉</div>
             <h2 className="text-xl font-bold text-slate-100 mb-2">Dein Paket ist angekommen!</h2>
             <p className="text-slate-400 text-sm mb-5">
-              Deine fiktive Bestellung <strong>{orderNum}</strong> wurde virtuell zugestellt. Viel Spaß!
+              Deine Spaß-Bestellung <strong>{orderNum}</strong> wurde virtuell zugestellt. Viel Spaß!
             </p>
             <Link href="/shoppen"
               className="inline-flex px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity">

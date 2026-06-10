@@ -43,7 +43,7 @@ export default function LiefernPage() {
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
       <div className="bg-slate-800/80 border-b border-slate-700/50 px-4 py-2 text-center">
         <p className="text-xs text-slate-500">
-          ⚠️ Simulationsseite — kein echter Kauf, keine echte Lieferung. Alles fiktiv.
+          ⚠️ Zum Spaß — kein echter Kauf, keine echte Lieferung.
         </p>
       </div>
 
@@ -60,7 +60,7 @@ export default function LiefernPage() {
         {!selected ? (
           <>
             <h1 className="text-2xl font-bold mb-1">Restaurant wählen</h1>
-            <p className="text-slate-400 text-sm mb-6">Wo soll dein fiktives Essen herkommen?</p>
+            <p className="text-slate-400 text-sm mb-6">Wo soll dein virtuelles Essen herkommen?</p>
             <div className="grid sm:grid-cols-2 gap-4">
               {restaurants.map((r) => (
                 <button key={r.id} onClick={() => setSelected(r.id)}
@@ -156,7 +156,7 @@ export default function LiefernPage() {
                     </div>
                     <div className="border-t border-slate-700/60 pt-3 mb-4">
                       <div className="flex justify-between text-sm text-slate-400 mb-1">
-                        <span>Lieferung (fiktiv)</span><span>0,00€</span>
+                        <span>Lieferung (gratis)</span><span>0,00€</span>
                       </div>
                       <div className="flex justify-between font-bold text-slate-100">
                         <span>Gesamt</span><span>{total.toFixed(2)}€</span>
@@ -164,7 +164,7 @@ export default function LiefernPage() {
                     </div>
                     <button onClick={handleOrder} disabled={ordering}
                       className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold hover:opacity-90 disabled:opacity-70 transition-opacity text-sm">
-                      {ordering ? "Wird bestellt… 🛵" : "Jetzt bestellen (fiktiv)"}
+                      {ordering ? "Wird bestellt… 🛵" : "Jetzt bestellen — zum Spaß! 🛵"}
                     </button>
                     <p className="text-xs text-slate-600 text-center mt-2">Es wird nichts berechnet.</p>
                   </>

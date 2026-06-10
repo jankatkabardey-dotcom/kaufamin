@@ -8,7 +8,7 @@ const modes = [
     emoji: "🛵",
     title: "Lieferhase",
     subtitle: "Essen bestellen",
-    desc: "Wähle dein Lieblingsrestaurant, fülle deinen Warenkorb und verfolge deinen (fiktiven) Kurierfahrer live auf der Karte.",
+    desc: "Wähle dein Lieblingsrestaurant, fülle deinen Warenkorb und verfolge deinen virtuellen Kurierfahrer live auf der Karte.",
     color: "from-orange-500/20 to-red-500/20",
     border: "border-orange-500/30",
     badge: "bg-orange-500/20 text-orange-300",
@@ -19,7 +19,7 @@ const modes = [
     emoji: "📦",
     title: "Schnellkauf",
     subtitle: "Online einkaufen",
-    desc: "Stöbere durch Produkte, leg sie in den Warenkorb und verfolge dein Paket mit einem fiktiven PKT-Tracker — ganz ohne Kosten.",
+    desc: "Stöbere durch Produkte, leg sie in den Warenkorb und verfolge dein Paket mit einem virtuellen PKT-Tracker — ganz ohne Kosten.",
     color: "from-blue-500/20 to-cyan-500/20",
     border: "border-blue-500/30",
     badge: "bg-blue-500/20 text-blue-300",
@@ -50,7 +50,7 @@ export default function HomePage() {
         <p className="text-xs text-slate-400">
           ⚠️{" "}
           <strong className="text-slate-300">Simulationsseite zu reinen Unterhaltungszwecken.</strong>{" "}
-          Kein echter Kauf, keine echte Bestellung, keine echte Lieferung. Alle Produkte, Restaurants und Sendungen sind vollständig fiktiv.
+          Zum Spaß — kein echter Kauf, keine echte Lieferung. Alles virtuell & kostenlos.
         </p>
       </div>
 
@@ -140,7 +140,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="relative z-10 border-t border-slate-800/60 py-6 px-6 text-center">
         <p className="text-xs text-slate-600">
-          © 2026 Kaufamin · Alle Inhalte sind fiktiv und dienen ausschließlich der Unterhaltung ·{" "}
+          © 2026 Kaufamin · Zum Spaß — alles virtuell & kostenlos ·{" "}
           <Link href="/impressum" className="hover:text-slate-400 transition-colors">
             Impressum
           </Link>

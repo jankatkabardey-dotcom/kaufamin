@@ -45,7 +45,7 @@ export default function ShoppenPage() {
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
       <div className="bg-slate-800/80 border-b border-slate-700/50 px-4 py-2 text-center">
         <p className="text-xs text-slate-500">
-          ⚠️ Simulationsseite — kein echter Kauf. Alle Produkte sind vollständig fiktiv.
+          ⚠️ Zum Spaß — kein echter Kauf, keine echte Lieferung.
         </p>
       </div>
 
@@ -137,7 +137,7 @@ export default function ShoppenPage() {
                   </div>
                   <div className="border-t border-slate-700/60 pt-3 mb-4">
                     <div className="flex justify-between text-xs text-slate-400 mb-1">
-                      <span>Versand (fiktiv)</span><span>0,00€</span>
+                      <span>Versand (gratis)</span><span>0,00€</span>
                     </div>
                     <div className="flex justify-between font-bold text-slate-100">
                       <span>Gesamt</span><span>{total.toFixed(2)}€</span>
@@ -145,7 +145,7 @@ export default function ShoppenPage() {
                   </div>
                   <button onClick={handleCheckout} disabled={checkedOut}
                     className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold hover:opacity-90 disabled:opacity-70 transition-opacity text-sm">
-                    {checkedOut ? "Wird bearbeitet… 📦" : "Zur Kasse (fiktiv)"}
+                    {checkedOut ? "Wird bearbeitet… 📦" : "Zur Kasse — zum Spaß! 📦"}
                   </button>
                   <p className="text-xs text-slate-600 text-center mt-2">Es wird nichts berechnet.</p>
                 </>

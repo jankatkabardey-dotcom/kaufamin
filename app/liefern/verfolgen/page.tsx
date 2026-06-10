@@ -116,7 +116,7 @@ function VerfolgenContent() {
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
       <div className="bg-slate-800/80 border-b border-slate-700/50 px-4 py-2 text-center">
         <p className="text-xs text-slate-500">
-          ⚠️ Simulationsseite — Diese Lieferung ist vollständig fiktiv. Kein echtes Essen, kein echter Kurierfahrer.
+          ⚠️ Zum Spaß — kein echtes Essen, kein echter Kurierfahrer. Alles virtuell!
         </p>
       </div>
 
