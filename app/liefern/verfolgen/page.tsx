@@ -12,13 +12,38 @@ const STEPS = [
   { label: "Zugestellt!", icon: "🎉", delay: 55000 },
 ];
 
+// Default restaurant coords in Berlin (per restaurant name)
+const RESTAURANT_COORDS: Record<string, [number, number]> = {
+  "Berliner Döner Haus": [52.5206, 13.4027],
+  "Napoli Pizza & Pasta": [52.5251, 13.3817],
+  "Tokyo Ramen & Sushi": [52.5145, 13.4108],
+  "Burger Brothers": [52.5302, 13.3847],
+};
+const DEFAULT_START: [number, number] = [52.5206, 13.4027];
+const DEFAULT_END: [number, number] = [52.5120, 13.4220];
+
+async function geocode(address: string): Promise<[number, number] | null> {
+  try {
+    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1&countrycodes=de`;
+    const res = await fetch(url, { headers: { "Accept-Language": "de" } });
+    const data = await res.json();
+    if (data && data[0]) return [parseFloat(data[0].lat), parseFloat(data[0].lon)];
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 function VerfolgenContent() {
   const params = useSearchParams();
   const restaurantName = params.get("restaurant") || "Restaurant";
+  const addressParam = params.get("address") || "";
+
   const mapRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(0);
   const [elapsed, setElapsed] = useState(0);
   const [arrived, setArrived] = useState(false);
+  const [resolvedAddress, setResolvedAddress] = useState(addressParam || "Berlin");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,13 +65,14 @@ function VerfolgenContent() {
     if (typeof window === "undefined" || !mapRef.current) return;
 
     let map: import("leaflet").Map | null = null;
-    let marker: import("leaflet").Marker | null = null;
     let animFrame: number;
 
-    import("leaflet").then((L) => {
+    const startCoord: [number, number] = RESTAURANT_COORDS[restaurantName] ?? DEFAULT_START;
+
+    const initMap = async (endCoord: [number, number]) => {
+      const L = await import("leaflet");
       if (!mapRef.current) return;
 
-      // Fix default icon paths for Next.js
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       delete (L.Icon.Default.prototype as any)._getIconUrl;
       L.Icon.Default.mergeOptions({
@@ -55,36 +81,33 @@ function VerfolgenContent() {
         shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
       });
 
-      // Berlin Mitte area
-      const startLat = 52.520;
-      const startLng = 13.400;
-      const endLat = 52.512;
-      const endLng = 13.420;
+      const center: [number, number] = [
+        (startCoord[0] + endCoord[0]) / 2,
+        (startCoord[1] + endCoord[1]) / 2,
+      ];
 
-      map = L.map(mapRef.current, { zoomControl: true, attributionControl: false }).setView(
-        [startLat, startLng], 14
-      );
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap",
-      }).addTo(map);
+      map = L.map(mapRef.current, { zoomControl: true, attributionControl: false }).setView(center, 13);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
       const courierIcon = L.divIcon({
         html: '<div style="font-size:28px;line-height:1;">🛵</div>',
-        iconSize: [32, 32],
-        iconAnchor: [16, 16],
-        className: "",
+        iconSize: [32, 32], iconAnchor: [16, 16], className: "",
       });
-
       const destIcon = L.divIcon({
         html: '<div style="font-size:24px;line-height:1;">📍</div>',
-        iconSize: [24, 24],
-        iconAnchor: [12, 24],
-        className: "",
+        iconSize: [24, 24], iconAnchor: [12, 24], className: "",
+      });
+      const restIcon = L.divIcon({
+        html: '<div style="font-size:22px;line-height:1;">🍽️</div>',
+        iconSize: [24, 24], iconAnchor: [12, 12], className: "",
       });
 
-      L.marker([endLat, endLng], { icon: destIcon }).addTo(map);
-      marker = L.marker([startLat, startLng], { icon: courierIcon }).addTo(map);
+      L.marker(endCoord, { icon: destIcon }).addTo(map).bindPopup("Deine Adresse");
+      L.marker(startCoord, { icon: restIcon }).addTo(map).bindPopup(restaurantName);
+      const courier = L.marker(startCoord, { icon: courierIcon }).addTo(map);
+
+      // Draw route line
+      L.polyline([startCoord, endCoord], { color: "#f97316", weight: 2, dashArray: "6, 6", opacity: 0.5 }).addTo(map);
 
       const totalDuration = STEPS[STEPS.length - 1].delay;
       let startTime: number | null = null;
@@ -92,20 +115,33 @@ function VerfolgenContent() {
       const animate = (ts: number) => {
         if (!startTime) startTime = ts;
         const prog = Math.min((ts - startTime) / totalDuration, 1);
-        const easedProg = prog < 0.5 ? 2 * prog * prog : -1 + (4 - 2 * prog) * prog;
-        const lat = startLat + (endLat - startLat) * easedProg;
-        const lng = startLng + (endLng - startLng) * easedProg;
-        marker?.setLatLng([lat, lng]);
+        const eased = prog < 0.5 ? 2 * prog * prog : -1 + (4 - 2 * prog) * prog;
+        const lat = startCoord[0] + (endCoord[0] - startCoord[0]) * eased;
+        const lng = startCoord[1] + (endCoord[1] - startCoord[1]) * eased;
+        courier.setLatLng([lat, lng]);
         if (prog < 1) animFrame = requestAnimationFrame(animate);
       };
-
       animFrame = requestAnimationFrame(animate);
-    });
+    };
+
+    // Geocode address, fall back to default if not found
+    (async () => {
+      let endCoord = DEFAULT_END;
+      if (addressParam) {
+        const result = await geocode(addressParam + ", Deutschland");
+        if (result) {
+          endCoord = result;
+          setResolvedAddress(addressParam);
+        }
+      }
+      initMap(endCoord);
+    })();
 
     return () => {
       cancelAnimationFrame(animFrame);
       map?.remove();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const remaining = Math.max(0, Math.ceil((STEPS[STEPS.length - 1].delay - elapsed) / 1000));
@@ -134,8 +170,8 @@ function VerfolgenContent() {
             <div className="text-6xl mb-4">🎉</div>
             <h2 className="text-2xl font-bold text-slate-100 mb-2">Dein Essen ist angekommen!</h2>
             <p className="text-slate-400 text-sm mb-6">
-              Deine virtuelle Bestellung von <strong>{restaurantName}</strong> wurde erfolgreich zugestellt.
-              Guten Appetit! 😋
+              Deine virtuelle Bestellung von <strong>{restaurantName}</strong> wurde an{" "}
+              <strong>{resolvedAddress}</strong> zugestellt. Guten Appetit! 😋
             </p>
             <Link href="/liefern"
               className="inline-flex px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity">
@@ -147,6 +183,9 @@ function VerfolgenContent() {
             <div>
               <div className="text-sm text-slate-400 mb-0.5">Bestellung bei</div>
               <div className="font-semibold text-slate-100">{restaurantName}</div>
+              {resolvedAddress && (
+                <div className="text-xs text-slate-500 mt-0.5">📍 {resolvedAddress}</div>
+              )}
             </div>
             <div className="text-right">
               <div className="text-xs text-slate-500 mb-0.5">Noch ca.</div>
@@ -158,7 +197,7 @@ function VerfolgenContent() {
         )}
 
         {/* Map */}
-        <div className="rounded-2xl overflow-hidden border border-slate-700/60 mb-5" style={{ height: 320 }}>
+        <div className="rounded-2xl overflow-hidden border border-slate-700/60 mb-5" style={{ height: 340 }}>
           <div ref={mapRef} style={{ width: "100%", height: "100%" }} />
         </div>
 
@@ -178,7 +217,6 @@ function VerfolgenContent() {
                     {s.label}
                   </span>
                   {active && <span className="ml-auto text-xs text-orange-300 animate-pulse">In Bearbeitung…</span>}
-                  {done && i === STEPS.length - 1 && <span className="ml-auto text-xs text-emerald-400">✓ Fertig</span>}
                 </div>
               );
             })}

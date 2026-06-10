@@ -13,6 +13,7 @@ export default function LiefernPage() {
   const [selected, setSelected] = useState<string | null>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [ordering, setOrdering] = useState(false);
+  const [address, setAddress] = useState("");
 
   const restaurant = restaurants.find((r) => r.id === selected);
 
@@ -35,7 +36,8 @@ export default function LiefernPage() {
     if (cart.length === 0 || !selected) return;
     setOrdering(true);
     setTimeout(() => {
-      router.push(`/liefern/verfolgen?restaurant=${encodeURIComponent(restaurant!.name)}`);
+      const addr = address.trim() || "Berlin Mitte";
+      router.push(`/liefern/verfolgen?restaurant=${encodeURIComponent(restaurant!.name)}&address=${encodeURIComponent(addr)}`);
     }, 1500);
   };
 
@@ -154,6 +156,18 @@ export default function LiefernPage() {
                         </div>
                       ))}
                     </div>
+                    {/* Address input */}
+                    <div className="mb-4">
+                      <label className="block text-xs text-slate-400 mb-1.5">📍 Lieferadresse (nur zum Spaß)</label>
+                      <input
+                        type="text"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        placeholder="z.B. Alexanderplatz 1, Berlin"
+                        className="w-full bg-slate-800/60 border border-slate-700/60 rounded-xl px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-orange-500/60 transition-colors"
+                      />
+                    </div>
+
                     <div className="border-t border-slate-700/60 pt-3 mb-4">
                       <div className="flex justify-between text-sm text-slate-400 mb-1">
                         <span>Lieferung (gratis)</span><span>0,00€</span>
