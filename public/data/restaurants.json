@@ -8,12 +8,14 @@
     "delivery": "25–35 Min.",
     "min": 8,
     "emoji": "🥙",
+    "image": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&h=300&fit=crop",
     "color": "from-red-500/20 to-orange-500/20",
+    "border": "border-orange-500/30",
     "items": [
-      { "id": "d1", "name": "Döner im Fladenbrot", "desc": "Mit Salat, Tomate, Zwiebeln und Joghurtsauce", "price": 6.50, "emoji": "🥙" },
-      { "id": "d2", "name": "Dürüm Wrap", "desc": "Im Lavaschbrot mit Krautsalat und scharfer Soße", "price": 7.00, "emoji": "🌯" },
-      { "id": "d3", "name": "Falafel Teller", "desc": "Frisch frittiert mit Hummus und Pittabrot", "price": 8.50, "emoji": "🧆" },
-      { "id": "d4", "name": "Ayran 0,3l", "desc": "Frisch, leicht gesalzen", "price": 1.50, "emoji": "🥛" }
+      { "id": "d1", "name": "Döner im Fladenbrot", "desc": "Mit Salat, Tomate, Zwiebeln und Joghurtsauce", "price": 6.50, "emoji": "🥙", "image": "https://images.unsplash.com/photo-1561651823-34feb02250e4?w=200&h=200&fit=crop" },
+      { "id": "d2", "name": "Dürüm Wrap", "desc": "Im Lavaschbrot mit Krautsalat und scharfer Soße", "price": 7.00, "emoji": "🌯", "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=200&h=200&fit=crop" },
+      { "id": "d3", "name": "Falafel Teller", "desc": "Frisch frittiert mit Hummus und Pittabrot", "price": 8.50, "emoji": "🧆", "image": "https://images.unsplash.com/photo-1614583225154-5fcdda07019e?w=200&h=200&fit=crop" },
+      { "id": "d4", "name": "Ayran 0,3l", "desc": "Frisch, leicht gesalzen", "price": 1.50, "emoji": "🥛", "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&h=200&fit=crop" }
     ]
   },
   {
@@ -25,12 +27,14 @@
     "delivery": "30–45 Min.",
     "min": 12,
     "emoji": "🍕",
+    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&h=300&fit=crop",
     "color": "from-green-500/20 to-emerald-500/20",
+    "border": "border-green-500/30",
     "items": [
-      { "id": "p1", "name": "Margherita", "desc": "Tomatensoße, Mozzarella, Basilikum", "price": 9.90, "emoji": "🍕" },
-      { "id": "p2", "name": "Salami Piccante", "desc": "Mit scharfer Salami und eingelegten Pepperoni", "price": 11.90, "emoji": "🍕" },
-      { "id": "p3", "name": "Spaghetti Carbonara", "desc": "Ei, Pancetta, Pecorino, schwarzer Pfeffer", "price": 12.50, "emoji": "🍝" },
-      { "id": "p4", "name": "Tiramisu", "desc": "Hausgemacht, nach Originalrezept", "price": 4.50, "emoji": "🍮" }
+      { "id": "p1", "name": "Margherita", "desc": "Tomatensoße, Mozzarella, Basilikum", "price": 9.90, "emoji": "🍕", "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=200&h=200&fit=crop" },
+      { "id": "p2", "name": "Salami Piccante", "desc": "Mit scharfer Salami und eingelegten Pepperoni", "price": 11.90, "emoji": "🍕", "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=200&h=200&fit=crop" },
+      { "id": "p3", "name": "Spaghetti Carbonara", "desc": "Ei, Pancetta, Pecorino, schwarzer Pfeffer", "price": 12.50, "emoji": "🍝", "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=200&h=200&fit=crop" },
+      { "id": "p4", "name": "Tiramisu", "desc": "Hausgemacht, nach Originalrezept", "price": 4.50, "emoji": "🍮", "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=200&h=200&fit=crop" }
     ]
   },
   {
@@ -42,12 +46,14 @@
     "delivery": "35–50 Min.",
     "min": 15,
     "emoji": "🍜",
+    "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&h=300&fit=crop",
     "color": "from-pink-500/20 to-rose-500/20",
+    "border": "border-pink-500/30",
     "items": [
-      { "id": "r1", "name": "Tonkotsu Ramen", "desc": "Schweineknochenbrühe, Chashu, Nori, Ajitama", "price": 13.90, "emoji": "🍜" },
-      { "id": "r2", "name": "Salmon Maki (8 Stk.)", "desc": "Frischer Lachs, Avocado, Gurke", "price": 9.50, "emoji": "🍣" },
-      { "id": "r3", "name": "Gyoza (6 Stk.)", "desc": "Gebratene Teigtaschen mit Dipping Sauce", "price": 7.50, "emoji": "🥟" },
-      { "id": "r4", "name": "Matcha Latte", "desc": "Mit Hafermilch, leicht gesüßt", "price": 4.00, "emoji": "🍵" }
+      { "id": "r1", "name": "Tonkotsu Ramen", "desc": "Schweineknochenbrühe, Chashu, Nori, Ajitama", "price": 13.90, "emoji": "🍜", "image": "https://images.unsplash.com/photo-1557872943-16a5ac26437e?w=200&h=200&fit=crop" },
+      { "id": "r2", "name": "Salmon Maki (8 Stk.)", "desc": "Frischer Lachs, Avocado, Gurke", "price": 9.50, "emoji": "🍣", "image": "https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=200&h=200&fit=crop" },
+      { "id": "r3", "name": "Gyoza (6 Stk.)", "desc": "Gebratene Teigtaschen mit Dipping Sauce", "price": 7.50, "emoji": "🥟", "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=200&h=200&fit=crop" },
+      { "id": "r4", "name": "Matcha Latte", "desc": "Mit Hafermilch, leicht gesüßt", "price": 4.00, "emoji": "🍵", "image": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=200&h=200&fit=crop" }
     ]
   },
   {
@@ -59,12 +65,14 @@
     "delivery": "20–30 Min.",
     "min": 10,
     "emoji": "🍔",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=300&fit=crop",
     "color": "from-yellow-500/20 to-amber-500/20",
+    "border": "border-yellow-500/30",
     "items": [
-      { "id": "b1", "name": "Classic Cheeseburger", "desc": "Rindfleisch-Patty, Cheddar, Salat, Tomate, Pickles", "price": 10.90, "emoji": "🍔" },
-      { "id": "b2", "name": "BBQ Bacon Burger", "desc": "Doppeltes Patty, Speck, BBQ-Sauce, Zwiebeln", "price": 13.90, "emoji": "🍔" },
-      { "id": "b3", "name": "Crispy Chicken Burger", "desc": "Frittiertes Hähnchen, Coleslaw, Honig-Senf", "price": 11.50, "emoji": "🍗" },
-      { "id": "b4", "name": "Pommes Frites (groß)", "desc": "Knusprig, mit Ketchup und Mayo", "price": 3.90, "emoji": "🍟" }
+      { "id": "b1", "name": "Classic Cheeseburger", "desc": "Rindfleisch-Patty, Cheddar, Salat, Tomate, Pickles", "price": 10.90, "emoji": "🍔", "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=200&h=200&fit=crop" },
+      { "id": "b2", "name": "BBQ Bacon Burger", "desc": "Doppeltes Patty, Speck, BBQ-Sauce, Zwiebeln", "price": 13.90, "emoji": "🍔", "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200&h=200&fit=crop" },
+      { "id": "b3", "name": "Crispy Chicken Burger", "desc": "Frittiertes Hähnchen, Coleslaw, Honig-Senf", "price": 11.50, "emoji": "🍗", "image": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=200&h=200&fit=crop" },
+      { "id": "b4", "name": "Pommes Frites (groß)", "desc": "Knusprig, mit Ketchup und Mayo", "price": 3.90, "emoji": "🍟", "image": "https://images.unsplash.com/photo-1576107232684-1279f390859f?w=200&h=200&fit=crop" }
     ]
   }
 ]

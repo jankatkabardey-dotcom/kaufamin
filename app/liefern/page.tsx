@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import restaurants from "@/public/data/restaurants.json";
@@ -40,24 +41,18 @@ export default function LiefernPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
-      {/* Disclaimer */}
       <div className="bg-slate-800/80 border-b border-slate-700/50 px-4 py-2 text-center">
         <p className="text-xs text-slate-500">
           ⚠️ Simulationsseite — kein echter Kauf, keine echte Lieferung. Alles fiktiv.
         </p>
       </div>
 
-      {/* Nav */}
       <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-4">
-        <Link href="/" className="text-slate-400 hover:text-slate-200 transition-colors text-sm">
-          ← Zurück
-        </Link>
+        <Link href="/" className="text-slate-400 hover:text-slate-200 transition-colors text-sm">← Zurück</Link>
         <div className="flex items-center gap-2">
           <span className="text-xl">🛵</span>
           <span className="font-bold text-lg">Lieferhase</span>
-          <span className="text-xs px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-300 border border-orange-500/30">
-            virtuell
-          </span>
+          <span className="text-xs px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-300 border border-orange-500/30">virtuell</span>
         </div>
       </nav>
 
@@ -69,15 +64,16 @@ export default function LiefernPage() {
             <div className="grid sm:grid-cols-2 gap-4">
               {restaurants.map((r) => (
                 <button key={r.id} onClick={() => setSelected(r.id)}
-                  className={`text-left rounded-2xl border border-slate-700/60 bg-gradient-to-br ${r.color} p-5 hover:scale-[1.01] transition-all`}>
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-3xl">{r.emoji}</span>
-                    <div>
-                      <div className="font-semibold text-slate-100">{r.name}</div>
-                      <div className="text-xs text-slate-400">{r.cuisine}</div>
+                  className="text-left rounded-2xl border border-slate-700/60 bg-slate-900/60 overflow-hidden hover:scale-[1.01] transition-all group">
+                  <div className="relative h-40 w-full overflow-hidden">
+                    <Image src={r.image} alt={r.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
+                    <div className="absolute bottom-3 left-4">
+                      <div className="font-semibold text-white text-lg">{r.name}</div>
+                      <div className="text-xs text-slate-300">{r.cuisine}</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 text-xs text-slate-400">
+                  <div className="px-4 py-3 flex items-center gap-3 text-xs text-slate-400">
                     <span>⭐ {r.rating} ({r.reviews})</span>
                     <span>🕐 {r.delivery}</span>
                     <span>Min. {r.min}€</span>
@@ -88,23 +84,31 @@ export default function LiefernPage() {
           </>
         ) : (
           <div className="grid md:grid-cols-3 gap-6">
-            {/* Menu */}
             <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-5">
-                <button onClick={() => { setSelected(null); setCart([]); }}
-                  className="text-slate-400 hover:text-slate-200 text-sm transition-colors">
-                  ← Restaurant wechseln
-                </button>
-                <span className="text-slate-600">|</span>
-                <span className="font-semibold">{restaurant?.name}</span>
+              {/* Restaurant header */}
+              <div className="relative h-44 rounded-2xl overflow-hidden mb-5">
+                <Image src={restaurant!.image} alt={restaurant!.name} fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                  <div>
+                    <h2 className="text-xl font-bold text-white">{restaurant!.name}</h2>
+                    <p className="text-slate-300 text-sm">{restaurant!.cuisine} · ⭐ {restaurant!.rating}</p>
+                  </div>
+                  <button onClick={() => { setSelected(null); setCart([]); }}
+                    className="text-xs text-slate-300 bg-slate-800/70 px-3 py-1.5 rounded-full hover:bg-slate-700 transition-colors">
+                    ← Wechseln
+                  </button>
+                </div>
               </div>
+
               <div className="space-y-3">
                 {restaurant?.items.map((item) => {
                   const inCart = cart.find((c) => c.id === item.id);
                   return (
-                    <div key={item.id}
-                      className="rounded-xl border border-slate-700/60 bg-slate-900/60 p-4 flex items-center gap-4">
-                      <span className="text-3xl">{item.emoji}</span>
+                    <div key={item.id} className="rounded-xl border border-slate-700/60 bg-slate-900/60 p-4 flex items-center gap-4">
+                      <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                        <Image src={item.image} alt={item.name} fill className="object-cover" />
+                      </div>
                       <div className="flex-1 min-w-0">
                         <div className="font-medium text-slate-100">{item.name}</div>
                         <div className="text-xs text-slate-500 mt-0.5">{item.desc}</div>
@@ -114,14 +118,10 @@ export default function LiefernPage() {
                         {inCart ? (
                           <div className="flex items-center gap-2">
                             <button onClick={() => removeFromCart(item.id)}
-                              className="w-6 h-6 rounded-full bg-slate-700 text-slate-200 text-sm hover:bg-slate-600 transition-colors">
-                              −
-                            </button>
+                              className="w-6 h-6 rounded-full bg-slate-700 text-slate-200 text-sm hover:bg-slate-600 transition-colors">−</button>
                             <span className="text-sm font-medium w-4 text-center">{inCart.qty}</span>
                             <button onClick={() => addToCart(item)}
-                              className="w-6 h-6 rounded-full bg-orange-500 text-white text-sm hover:bg-orange-400 transition-colors">
-                              +
-                            </button>
+                              className="w-6 h-6 rounded-full bg-orange-500 text-white text-sm hover:bg-orange-400 transition-colors">+</button>
                           </div>
                         ) : (
                           <button onClick={() => addToCart(item)}
@@ -156,21 +156,17 @@ export default function LiefernPage() {
                     </div>
                     <div className="border-t border-slate-700/60 pt-3 mb-4">
                       <div className="flex justify-between text-sm text-slate-400 mb-1">
-                        <span>Lieferung (fiktiv)</span>
-                        <span>0,00€</span>
+                        <span>Lieferung (fiktiv)</span><span>0,00€</span>
                       </div>
                       <div className="flex justify-between font-bold text-slate-100">
-                        <span>Gesamt</span>
-                        <span>{total.toFixed(2)}€</span>
+                        <span>Gesamt</span><span>{total.toFixed(2)}€</span>
                       </div>
                     </div>
                     <button onClick={handleOrder} disabled={ordering}
                       className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold hover:opacity-90 disabled:opacity-70 transition-opacity text-sm">
                       {ordering ? "Wird bestellt… 🛵" : "Jetzt bestellen (fiktiv)"}
                     </button>
-                    <p className="text-xs text-slate-600 text-center mt-2">
-                      Es wird nichts berechnet oder geliefert.
-                    </p>
+                    <p className="text-xs text-slate-600 text-center mt-2">Es wird nichts berechnet.</p>
                   </>
                 )}
               </div>

@@ -1,10 +1,10 @@
 [
-  { "id": "1", "name": "Kabellose Kopfhörer ProX", "category": "Elektronik", "price": 79.99, "oldPrice": 129.99, "rating": 4.7, "reviews": 1243, "emoji": "🎧", "badge": "Bestseller" },
-  { "id": "2", "name": "Ergonomischer Schreibtischstuhl", "category": "Büro & Einrichtung", "price": 199.00, "oldPrice": 299.00, "rating": 4.5, "reviews": 587, "emoji": "🪑", "badge": "Sale" },
-  { "id": "3", "name": "Kaffeemaschine Barista Pro", "category": "Küche", "price": 89.95, "oldPrice": null, "rating": 4.8, "reviews": 2104, "emoji": "☕", "badge": null },
-  { "id": "4", "name": "Yoga-Matte Premium", "category": "Sport & Fitness", "price": 39.90, "oldPrice": 59.90, "rating": 4.6, "reviews": 891, "emoji": "🧘", "badge": "Sale" },
-  { "id": "5", "name": "Roman: Das stille Haus", "category": "Bücher", "price": 14.99, "oldPrice": null, "rating": 4.9, "reviews": 3456, "emoji": "📚", "badge": "Top" },
-  { "id": "6", "name": "Smartwatch FitTrack 5", "category": "Elektronik", "price": 149.00, "oldPrice": 199.00, "rating": 4.4, "reviews": 672, "emoji": "⌚", "badge": "Neu" },
-  { "id": "7", "name": "Gewürzset Weltküche (12er)", "category": "Lebensmittel", "price": 24.99, "oldPrice": null, "rating": 4.7, "reviews": 445, "emoji": "🧂", "badge": null },
-  { "id": "8", "name": "Pflanzgefäß Set (3er)", "category": "Garten", "price": 19.90, "oldPrice": 29.90, "rating": 4.3, "reviews": 213, "emoji": "🪴", "badge": "Sale" }
+  { "id": "1", "name": "Kabellose Kopfhörer ProX", "category": "Elektronik", "price": 79.99, "oldPrice": 129.99, "rating": 4.7, "reviews": 1243, "emoji": "🎧", "badge": "Bestseller", "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop" },
+  { "id": "2", "name": "Ergonomischer Schreibtischstuhl", "category": "Büro & Einrichtung", "price": 199.00, "oldPrice": 299.00, "rating": 4.5, "reviews": 587, "emoji": "🪑", "badge": "Sale", "image": "https://images.unsplash.com/photo-1589384267710-7a170981ca78?w=400&h=400&fit=crop" },
+  { "id": "3", "name": "Kaffeemaschine Barista Pro", "category": "Küche", "price": 89.95, "oldPrice": null, "rating": 4.8, "reviews": 2104, "emoji": "☕", "badge": null, "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=400&fit=crop" },
+  { "id": "4", "name": "Yoga-Matte Premium", "category": "Sport & Fitness", "price": 39.90, "oldPrice": 59.90, "rating": 4.6, "reviews": 891, "emoji": "🧘", "badge": "Sale", "image": "https://images.unsplash.com/photo-1601925228008-53dcc4a4d631?w=400&h=400&fit=crop" },
+  { "id": "5", "name": "Roman: Das stille Haus", "category": "Bücher", "price": 14.99, "oldPrice": null, "rating": 4.9, "reviews": 3456, "emoji": "📚", "badge": "Top", "image": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=400&fit=crop" },
+  { "id": "6", "name": "Smartwatch FitTrack 5", "category": "Elektronik", "price": 149.00, "oldPrice": 199.00, "rating": 4.4, "reviews": 672, "emoji": "⌚", "badge": "Neu", "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop" },
+  { "id": "7", "name": "Gewürzset Weltküche (12er)", "category": "Lebensmittel", "price": 24.99, "oldPrice": null, "rating": 4.7, "reviews": 445, "emoji": "🧂", "badge": null, "image": "https://images.unsplash.com/photo-1532336414038-cf19250c5757?w=400&h=400&fit=crop" },
+  { "id": "8", "name": "Pflanzgefäß Set (3er)", "category": "Garten", "price": 19.90, "oldPrice": 29.90, "rating": 4.3, "reviews": 213, "emoji": "🪴", "badge": "Sale", "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&h=400&fit=crop" }
 ]

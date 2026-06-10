@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import products from "@/public/data/products.json";
@@ -44,7 +45,7 @@ export default function ShoppenPage() {
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
       <div className="bg-slate-800/80 border-b border-slate-700/50 px-4 py-2 text-center">
         <p className="text-xs text-slate-500">
-          ⚠️ Simulationsseite — kein echter Kauf. Alle Produkte und Bestellungen sind vollständig fiktiv.
+          ⚠️ Simulationsseite — kein echter Kauf. Alle Produkte sind vollständig fiktiv.
         </p>
       </div>
 
@@ -58,7 +59,6 @@ export default function ShoppenPage() {
       </nav>
 
       <div className="max-w-6xl mx-auto px-6 pb-16">
-        {/* Category filter */}
         <div className="flex gap-2 flex-wrap mb-6">
           {categories.map((cat) => (
             <button key={cat} onClick={() => setFilter(cat)}
@@ -69,52 +69,54 @@ export default function ShoppenPage() {
         </div>
 
         <div className="grid lg:grid-cols-4 gap-6">
-          {/* Products */}
           <div className="lg:col-span-3">
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
               {filtered.map((p) => {
                 const inCart = cart.find((c) => c.id === p.id);
                 return (
-                  <div key={p.id} className="rounded-2xl border border-slate-700/60 bg-slate-900/60 p-4 flex flex-col">
-                    <div className="text-5xl text-center py-4">{p.emoji}</div>
-                    {p.badge && (
-                      <span className="self-start text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 mb-2">
-                        {p.badge}
-                      </span>
-                    )}
-                    <div className="text-sm font-medium text-slate-100 mb-1 flex-1">{p.name}</div>
-                    <div className="text-xs text-slate-500 mb-3">{p.category}</div>
-                    <div className="flex items-center gap-1 mb-3">
-                      <span className="text-yellow-400 text-xs">{"★".repeat(Math.round(p.rating))}</span>
-                      <span className="text-xs text-slate-500">({p.reviews.toLocaleString("de-DE")})</span>
-                    </div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="font-bold text-slate-100">{p.price.toFixed(2)}€</span>
-                      {p.oldPrice && (
-                        <span className="text-xs text-slate-500 line-through">{p.oldPrice.toFixed(2)}€</span>
+                  <div key={p.id} className="rounded-2xl border border-slate-700/60 bg-slate-900/60 overflow-hidden flex flex-col">
+                    <div className="relative h-44 w-full overflow-hidden">
+                      <Image src={p.image} alt={p.name} fill className="object-cover hover:scale-105 transition-transform duration-300" />
+                      {p.badge && (
+                        <div className="absolute top-2 left-2">
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500 text-white font-medium">{p.badge}</span>
+                        </div>
                       )}
                     </div>
-                    {inCart ? (
-                      <div className="flex items-center gap-2">
-                        <button onClick={() => removeFromCart(p.id)}
-                          className="flex-1 py-1.5 rounded-lg bg-slate-700 text-slate-200 text-sm hover:bg-slate-600 transition-colors">−</button>
-                        <span className="text-sm font-medium w-6 text-center">{inCart.qty}</span>
-                        <button onClick={() => addToCart(p)}
-                          className="flex-1 py-1.5 rounded-lg bg-blue-500 text-white text-sm hover:bg-blue-400 transition-colors">+</button>
+                    <div className="p-4 flex flex-col flex-1">
+                      <div className="text-sm font-medium text-slate-100 mb-1 flex-1">{p.name}</div>
+                      <div className="text-xs text-slate-500 mb-2">{p.category}</div>
+                      <div className="flex items-center gap-1 mb-2">
+                        <span className="text-yellow-400 text-xs">{"★".repeat(Math.round(p.rating))}</span>
+                        <span className="text-xs text-slate-500">({p.reviews.toLocaleString("de-DE")})</span>
                       </div>
-                    ) : (
-                      <button onClick={() => addToCart(p)}
-                        className="w-full py-2 rounded-lg bg-blue-500/20 text-blue-300 text-sm hover:bg-blue-500/30 transition-colors">
-                        In den Warenkorb
-                      </button>
-                    )}
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="font-bold text-slate-100">{p.price.toFixed(2)}€</span>
+                        {p.oldPrice && (
+                          <span className="text-xs text-slate-500 line-through">{p.oldPrice.toFixed(2)}€</span>
+                        )}
+                      </div>
+                      {inCart ? (
+                        <div className="flex items-center gap-2">
+                          <button onClick={() => removeFromCart(p.id)}
+                            className="flex-1 py-1.5 rounded-lg bg-slate-700 text-slate-200 text-sm hover:bg-slate-600 transition-colors">−</button>
+                          <span className="text-sm font-medium w-6 text-center">{inCart.qty}</span>
+                          <button onClick={() => addToCart(p)}
+                            className="flex-1 py-1.5 rounded-lg bg-blue-500 text-white text-sm hover:bg-blue-400 transition-colors">+</button>
+                        </div>
+                      ) : (
+                        <button onClick={() => addToCart(p)}
+                          className="w-full py-2 rounded-lg bg-blue-500/20 text-blue-300 text-sm hover:bg-blue-500/30 transition-colors">
+                          In den Warenkorb
+                        </button>
+                      )}
+                    </div>
                   </div>
                 );
               })}
             </div>
           </div>
 
-          {/* Cart */}
           <div className="lg:col-span-1">
             <div className="sticky top-6 rounded-2xl border border-slate-700/60 bg-slate-900/70 p-5">
               <h3 className="font-semibold text-slate-100 mb-4">
@@ -145,9 +147,7 @@ export default function ShoppenPage() {
                     className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold hover:opacity-90 disabled:opacity-70 transition-opacity text-sm">
                     {checkedOut ? "Wird bearbeitet… 📦" : "Zur Kasse (fiktiv)"}
                   </button>
-                  <p className="text-xs text-slate-600 text-center mt-2">
-                    Es wird nichts berechnet.
-                  </p>
+                  <p className="text-xs text-slate-600 text-center mt-2">Es wird nichts berechnet.</p>
                 </>
               )}
             </div>
