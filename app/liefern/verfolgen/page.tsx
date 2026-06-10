@@ -90,16 +90,19 @@ function VerfolgenContent() {
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
       const courierIcon = L.divIcon({
-        html: '<div style="font-size:28px;line-height:1;">🛵</div>',
-        iconSize: [32, 32], iconAnchor: [16, 16], className: "",
+        html: '<div style="font-size:28px;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.5));">🛵</div>',
+        iconSize: [36, 36],
+        iconAnchor: [18, 18],
       });
       const destIcon = L.divIcon({
-        html: '<div style="font-size:24px;line-height:1;">📍</div>',
-        iconSize: [24, 24], iconAnchor: [12, 24], className: "",
+        html: '<div style="font-size:28px;line-height:1;">📍</div>',
+        iconSize: [28, 36],
+        iconAnchor: [14, 34],
       });
       const restIcon = L.divIcon({
-        html: '<div style="font-size:22px;line-height:1;">🍽️</div>',
-        iconSize: [24, 24], iconAnchor: [12, 12], className: "",
+        html: '<div style="font-size:24px;line-height:1;">🍽️</div>',
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
       });
 
       L.marker(endCoord, { icon: destIcon }).addTo(map).bindPopup("Deine Adresse");
