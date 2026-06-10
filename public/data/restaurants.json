@@ -1,0 +1,70 @@
+[
+  {
+    "id": "1",
+    "name": "Berliner Döner Haus",
+    "cuisine": "Türkisch",
+    "rating": 4.8,
+    "reviews": 312,
+    "delivery": "25–35 Min.",
+    "min": 8,
+    "emoji": "🥙",
+    "color": "from-red-500/20 to-orange-500/20",
+    "items": [
+      { "id": "d1", "name": "Döner im Fladenbrot", "desc": "Mit Salat, Tomate, Zwiebeln und Joghurtsauce", "price": 6.50, "emoji": "🥙" },
+      { "id": "d2", "name": "Dürüm Wrap", "desc": "Im Lavaschbrot mit Krautsalat und scharfer Soße", "price": 7.00, "emoji": "🌯" },
+      { "id": "d3", "name": "Falafel Teller", "desc": "Frisch frittiert mit Hummus und Pittabrot", "price": 8.50, "emoji": "🧆" },
+      { "id": "d4", "name": "Ayran 0,3l", "desc": "Frisch, leicht gesalzen", "price": 1.50, "emoji": "🥛" }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Napoli Pizza & Pasta",
+    "cuisine": "Italienisch",
+    "rating": 4.6,
+    "reviews": 198,
+    "delivery": "30–45 Min.",
+    "min": 12,
+    "emoji": "🍕",
+    "color": "from-green-500/20 to-emerald-500/20",
+    "items": [
+      { "id": "p1", "name": "Margherita", "desc": "Tomatensoße, Mozzarella, Basilikum", "price": 9.90, "emoji": "🍕" },
+      { "id": "p2", "name": "Salami Piccante", "desc": "Mit scharfer Salami und eingelegten Pepperoni", "price": 11.90, "emoji": "🍕" },
+      { "id": "p3", "name": "Spaghetti Carbonara", "desc": "Ei, Pancetta, Pecorino, schwarzer Pfeffer", "price": 12.50, "emoji": "🍝" },
+      { "id": "p4", "name": "Tiramisu", "desc": "Hausgemacht, nach Originalrezept", "price": 4.50, "emoji": "🍮" }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Tokyo Ramen & Sushi",
+    "cuisine": "Japanisch",
+    "rating": 4.7,
+    "reviews": 445,
+    "delivery": "35–50 Min.",
+    "min": 15,
+    "emoji": "🍜",
+    "color": "from-pink-500/20 to-rose-500/20",
+    "items": [
+      { "id": "r1", "name": "Tonkotsu Ramen", "desc": "Schweineknochenbrühe, Chashu, Nori, Ajitama", "price": 13.90, "emoji": "🍜" },
+      { "id": "r2", "name": "Salmon Maki (8 Stk.)", "desc": "Frischer Lachs, Avocado, Gurke", "price": 9.50, "emoji": "🍣" },
+      { "id": "r3", "name": "Gyoza (6 Stk.)", "desc": "Gebratene Teigtaschen mit Dipping Sauce", "price": 7.50, "emoji": "🥟" },
+      { "id": "r4", "name": "Matcha Latte", "desc": "Mit Hafermilch, leicht gesüßt", "price": 4.00, "emoji": "🍵" }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Burger Brothers",
+    "cuisine": "Amerikanisch",
+    "rating": 4.5,
+    "reviews": 267,
+    "delivery": "20–30 Min.",
+    "min": 10,
+    "emoji": "🍔",
+    "color": "from-yellow-500/20 to-amber-500/20",
+    "items": [
+      { "id": "b1", "name": "Classic Cheeseburger", "desc": "Rindfleisch-Patty, Cheddar, Salat, Tomate, Pickles", "price": 10.90, "emoji": "🍔" },
+      { "id": "b2", "name": "BBQ Bacon Burger", "desc": "Doppeltes Patty, Speck, BBQ-Sauce, Zwiebeln", "price": 13.90, "emoji": "🍔" },
+      { "id": "b3", "name": "Crispy Chicken Burger", "desc": "Frittiertes Hähnchen, Coleslaw, Honig-Senf", "price": 11.50, "emoji": "🍗" },
+      { "id": "b4", "name": "Pommes Frites (groß)", "desc": "Knusprig, mit Ketchup und Mayo", "price": 3.90, "emoji": "🍟" }
+    ]
+  }
+]
